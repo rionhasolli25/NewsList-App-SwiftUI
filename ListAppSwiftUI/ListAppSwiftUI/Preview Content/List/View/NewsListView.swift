@@ -18,9 +18,12 @@ struct NewsListView: View {
     var body: some View {
         NavigationView {
             ZStack {
-       
-                VStack(spacing: 0) {
-                    // 🔍 Search Bar
+                Image( "101304060-72ff5b00-380d-11eb-8c58-a3172d791c9c")
+                    .resizable()
+                    .ignoresSafeArea()
+                
+                VStack(spacing: 20) {
+                 
                     HStack {
                         Image(systemName: "magnifyingglass")
                             .foregroundColor(.gray)
@@ -28,11 +31,13 @@ struct NewsListView: View {
                             .textFieldStyle(PlainTextFieldStyle())
                             .padding(8)
                     }
+                    .padding(.horizontal, 14)
+                    .padding(.vertical, 10)
+                    .background(Color.white.opacity(0.95))
+                    .cornerRadius(20)
+                    .shadow(color: .gray.opacity(0.2), radius: 3, x: 0, y: 2)
                     .padding(.horizontal)
-                    .background(Color.white.opacity(0.9))
-                    .cornerRadius(10)
-                    .padding(.horizontal)
-                    .padding(.top, 10)
+                    .padding(.top, 20)
 
                     if viewModel.isLoading {
                         ProgressView("Loading News...")
@@ -131,7 +136,7 @@ struct NewsRowView: View {
 
 // MARK: - Main View
 struct MainNewsView: View {
-    @State private var selectedTab: CustomTabBar.Tab = .news
+    @State private var selectedTab: CustomTabBar.Tab = .home
     
     var body: some View {
         ZStack{
@@ -153,9 +158,9 @@ struct MainNewsView: View {
                 Group {
                     switch selectedTab {
                     case .home:
-                        NewsListView()
+                        AppleNewsView()
                     case .news:
-                        NewsListView() // 👇 new transparent version
+                        NewsListView()
                     case .hidden:
                         Text("👁 Hidden Section")
                             .font(.title)

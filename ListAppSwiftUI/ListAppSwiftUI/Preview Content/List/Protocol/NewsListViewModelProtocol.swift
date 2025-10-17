@@ -10,12 +10,10 @@ import Foundation
 protocol BaseViewModel : AnyObject{
     
 }
-
 protocol NewsListViewModelViewDelegate: AnyObject {
     func openWebPage(url: String)
 }
 
-// MARK: - ViewModel Protocol
 protocol NewsListViewModelProtocol: ObservableObject {
     var articles: [SportArticle] { get set }
     var filteredArticles: [SportArticle] { get set }
